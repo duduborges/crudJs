@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Crud</title>
+ <script src="script.js"></script>
+</head>
+<body>
+    <form action="">
+  
+    <label for="anotacoes">Anotações</label> &nbsp;
+    <input type="text" name="anotacoes" id="anotacoes"> &nbsp;
+    <label for="imagem">Coloque uma imagem</label> &nbsp;
+    <input type="file" name="imagem" id="imagem"> &nbsp;
+    <label for="numero">Digite um número:</label> &nbsp;
+    <input type="number" name="numero" id="numero"> &nbsp;
+    <label for="dia">Digite uma data:</label> &nbsp;
+    <input type="date" name="dia" id="dia"> &nbsp;
+    <button onclick="create()">Criar</button>
+        
+</form> <br> <br>
+<table style="margin: auto; border: 1px solid black;">
+    <tr>
+        <th>Anotações</th>
+        <th>Imagem</th>
+        <th>Numero</th>
+        <th>Data</th>
+
+      </tr><tr>
+        <td id="anot"></td>
+        <td id="img"></td>
+        <td id="num"></td>
+        <td id="data"></td>
+
+      </tr>
+</table>
+  <div>
+    
+
+    
+  </div>
+</body>
+</html>
