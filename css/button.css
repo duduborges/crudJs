@@ -8,9 +8,39 @@
     cursor: pointer;
     transition: box-shadow .6s ease;
 }
+.pesquisar{
+    text-align: left;
+    width: 10%;
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 20px;
+    border: 0.1px solid black  ;
+    border-radius: 6px;
+    transition: all 0.8s;
+    padding-left: 10px;
+}
+.pesquisar:focus{
+    text-align: left;
+    width: 10.2%;
+    height: 40px;
+    margin-left: 40px;
+    margin-top: 20px; 
+    padding-left: 10%;
+    
+}
+
+.btn-pesq{
+    width: 4%;
+    font-size: 13px;
+    color: rgba(78, 73, 73, 0.678);
+    height: 30px;
+    border-radius: 8px;
+    border:rgba(235, 233, 233, 0.678) 0.2px solid;
+    background-color: rgba(160, 211, 211, 0.548);
+}
 
 .button.blue{
-    background-color: #1FB6FF;
+    background-color: #1f6dff;
 }
 
 button.green{

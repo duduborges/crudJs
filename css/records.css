@@ -5,22 +5,30 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: min-content;
+    
+    display: flexbox;
 }
 .link{
-    max-width: 15ch;
+    max-width: 40ch;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding-right: 10px;
+}
+.acao{
+    width: 400px;
+}
+.anot{
+    max-width: 70ch;
+    max-height: 80px;
 }
 .records th{
     height: 50px;
-    background-color: var(--primary-color);
+    background-color: blue;
+    color: white;
     padding-left: 20px;
     font-size: 1.2rem;    
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    
 }
 .records td{
     height: 50px;
@@ -28,6 +36,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    word-wrap: break-word;    
 }
 
 .records th:last-child,
@@ -38,12 +47,13 @@
 }
 
 .records tr:hover{
-    background-color: var(--secundary-color);
+    background-color: rgba(120, 120, 240, 0.288);
 }
 
 @media(max-width:480px){
     .records{
         border-spacing: 5px;
+        margin-top: 50px;
     }
     .records thead{
         display:none;

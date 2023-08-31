@@ -12,14 +12,21 @@
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/records.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/a3a864ed6a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <title>CRUD</title>
 </head>
 
 <body>
     <header>
         <h1 class="header-title">Fazendo anotações</h1>
+        
     </header>
+    <!-- <p><input type="search" placeholder="Pesquisar..." class="pesquisar"> &nbsp; <button class="btn-pesq">Pesquisar</button></p> -->
     <main>
         <button type="button" class="button blue mobile" id="fazerAnotacao">Fazer uma anotação</button>
         <table id="tableClient" class="records">
@@ -27,7 +34,7 @@
                 <tr>
                     <th>Anotações</th>
                     <th>Links</th>
-                    <th>Ação</th>
+                    <th class="acao">Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,11 +44,11 @@
         <div class="modal" id="modal">
             <div class="modal-content">
                 <header class="modal-header">
-                    <h2>Novo Cliente</h2>
+                    <h2 class="modal-h2">Nova anotação</h2>
                     <span class="modal-close" id="modalClose">&#10006;</span>
                 </header>
                 <form id="form" class="modal-form">
-                    <input type="text" id="anotacao" data-index="new" class="modal-field" placeholder="Faça sua anotacao">
+                    <input type="text" id="anotacao" data-index="new" class="modal-field" autocomplete="off" placeholder="Faça sua anotacao">
                     <input type="url" id="link" class="modal-field" placeholder="Insira um link" >
             
                 </form>

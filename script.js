@@ -69,12 +69,12 @@ const saveClient = () => {
 const createRow = (client, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
-        <td>${client.anotacao}</td>
-        <td class="link">${client.link}</td>
+        <td class="anot">${client.anotacao}</td>
+        <td class="link"><a href="${client.link}">${client.link} </a></td>
 
         <td>
-            <button type="button" class="button green" id="edit-${index}">Editar</button>
-            <button type="button" class="button red" id="delete-${index}" >Excluir</button>
+            <button type="button" class="button green" id="edit-${index}">Editar <i class="fa-solid fa-pencil" style="color: #ffffff;"></i></button>
+            <button type="button" class="button red" id="delete-${index}" ><i class="fa-solid fa-trash" style="color: #ffffff;"></i> Remover </button>
         </td>
     `
     document.querySelector('#tableClient>tbody').appendChild(newRow)
