@@ -1,55 +1,142 @@
-// Base de dados Nossa
-const miniRedeSocial = {
-    usuarios : [ 
-        {
-            username: `omario`,
+'use strict'
+
+const openModal = () => document.getElementById('modal')
+    .classList.add('active')
+
+const closeModal = () => {
+    clearFields()
+    document.getElementById('modal').classList.remove('active')
+}
+
+
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? []
+const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient))
+
+// CRUD - create read update delete
+const deleteClient = (index) => {
+    const dbClient = readClient()
+    dbClient.splice(index, 1)
+    setLocalStorage(dbClient)
+}
+
+const updateClient = (index, client) => {
+    const dbClient = readClient()
+    dbClient[index] = client
+    setLocalStorage(dbClient)
+}
+
+const readClient = () => getLocalStorage()
+
+const createClient = (client) => {
+    const dbClient = getLocalStorage()
+    dbClient.push (client)
+    setLocalStorage(dbClient)
+}
+
+const isValidFields = () => {
+    return document.getElementById('form').reportValidity()
+}
+
+//Interação com o layout
+
+const clearFields = () => {
+    const fields = document.querySelectorAll('.modal-field')
+    fields.forEach(field => field.value = "")
+    document.getElementById('anotacao').dataset.index = 'new'
+    document.querySelector(".modal-header>h2").textContent  = 'Nova anotação'
+}
+
+const saveClient = () => {
+    if (isValidFields()) {
+        const client = {
+            anotacao: document.getElementById('anotacao').value,
+            link: document.getElementById('link').value,
+            
         }
-    ],
-    posts: [
-        {
-            id: 1,
-            owner: `omario`,
-            content: 'Crie Posts'
+        const index = document.getElementById('anotacao').dataset.index
+        if (index == 'new') {
+            createClient(client)
+            updateTable()
+            closeModal()
+        } else {
+            updateClient(index, client)
+            updateTable()
+            closeModal()
         }
-    ],
-  criaPost(dados, htmlOnly = false){
-    if(!htmlOnly){
-    // Cria Posts na memória (Array/Objeto)
-    miniRedeSocial.posts.push({
-            id: miniRedeSocial.posts.length + 1,
-            owner: dados.owner,
-            content: dados.content
-           
-        });
     }
-     // Cria post no HTML
-        const $listaDePosts = document.querySelector(".listaDePosts");
-        $listaDePosts.insertAdjacentHTML('afterbegin', `<li>${dados.content}</li>`);
+}
+
+const createRow = (client, index) => {
+    const newRow = document.createElement('tr')
+    newRow.innerHTML = `
+        <td>${client.anotacao}</td>
+        <td>${client.link}</td>
+
+        <td>
+            <button type="button" class="button green" id="edit-${index}">Editar</button>
+            <button type="button" class="button red" id="delete-${index}" >Excluir</button>
+        </td>
+    `
+    document.querySelector('#tableClient>tbody').appendChild(newRow)
+}
+
+const clearTable = () => {
+    const rows = document.querySelectorAll('#tableClient>tbody tr')
+    rows.forEach(row => row.parentNode.removeChild(row))
+}
+
+const updateTable = () => {
+    const dbClient = readClient()
+    clearTable()
+    dbClient.forEach(createRow)
+}
+
+const fillFields = (client) => {
+    document.getElementById('anotacao').value = client.anotacao
+    document.getElementById('link').value = client.link
+    document.getElementById('anotacao').dataset.index = client.index
+}
+
+const editClient = (index) => {
+    const client = readClient()[index]
+    client.index = index
+    fillFields(client)
+    document.querySelector(".modal-header>h2").textContent  = `Editando ${client.anotacao}`
+    openModal()
+}
+
+const editDelete = (event) => {
+    if (event.target.type == 'button') {
+
+        const [action, index] = event.target.id.split('-')
+
+        if (action == 'edit') {
+            editClient(index)
+        } else {
+            const client = readClient()[index]
+            const response = confirm(`Deseja realmente excluir a anotação ${client.anotacao} ?`)
+            if (response) {
+                deleteClient(index)
+                updateTable()
+            }
+        }
     }
-};
+}
 
+updateTable()
 
+// Eventos
+document.getElementById('fazerAnotacao')
+    .addEventListener('click', openModal)
 
+document.getElementById('modalClose')
+    .addEventListener('click', closeModal)
 
-// [CODIGO de Front End: Web]
-document.addEventListener('DOMContentLoaded', function() {
-    const $meuForm = document.querySelector('form');
+document.getElementById('salvar')
+    .addEventListener('click', saveClient)
 
-//CRUD : [READ]
-miniRedeSocial.posts.forEach(( {owner, content}) => {
-    miniRedeSocial.criaPost({owner: owner, content: content}, true)
-})
+document.querySelector('#tableClient>tbody')
+    .addEventListener('click', editDelete)
 
-//CRUD : CREATE
-    $meuForm.addEventListener('submit', function criaPostController(infosDoEvento) {
-      infosDoEvento.preventDefault();
-      console.log("Novo Post enviado!")
-      const $campoCriaPost = document.querySelector('input[name="anotacoes"]');
-
-      miniRedeSocial.criaPost({ owner: `omario`, content: $campoCriaPost.value})
-      console.log(miniRedeSocial.posts);
-      // Limpa o campo de anotações após adicionar o post
-      $campoCriaPost.value = '';
-      
-    });
-  });
+document.getElementById('cancelar')
+    .addEventListener('click', closeModal)
