@@ -2,17 +2,32 @@
     width: 100%;
     user-select: none;
     text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: min-content;
 }
-
+.link{
+    max-width: 15ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .records th{
     height: 50px;
     background-color: var(--primary-color);
     padding-left: 20px;
     font-size: 1.2rem;    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .records td{
     height: 50px;
     padding-left: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .records th:last-child,

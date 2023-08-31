@@ -70,7 +70,7 @@ const createRow = (client, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
         <td>${client.anotacao}</td>
-        <td>${client.link}</td>
+        <td class="link">${client.link}</td>
 
         <td>
             <button type="button" class="button green" id="edit-${index}">Editar</button>
