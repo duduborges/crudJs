@@ -19,6 +19,19 @@ body{
     font-family: 'karla', sans-serif;
     position:relative;
 }
+#deslogar{
+    height: 80px;
+    width: 100%;
+    font-size: large;
+
+    background-color: blue;
+    border: 0.3px groove rgb(14, 14, 247);
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
 
 header{
     background-color: blue;

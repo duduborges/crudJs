@@ -114,7 +114,7 @@ const editDelete = (event) => {
             editClient(index)
         } else {
             const client = readClient()[index]
-            const response = confirm(`Deseja realmente excluir a anotação ${client.anotacao} ?`)
+            const response = confirm(`Deseja realmente excluir a anotação ' ${client.anotacao} '?`)
             if (response) {
                 deleteClient(index)
                 updateTable()

@@ -1,66 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/records.css">
-    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href=" ">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
-    <script src="https://kit.fontawesome.com/a3a864ed6a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
-    <title> Anota Senai</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,200&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+
+    <title>Cadastro</title>
 </head>
 
 <body>
-    <header>
-        <h1 class="header-title">Anota Senai</h1>
-        
-    </header>
-    <!-- <p><input type="search" placeholder="Pesquisar..." class="pesquisar"> &nbsp; <button class="btn-pesq">Pesquisar</button></p> -->
-    <main>
-        <button type="button" class="button blue mobile" id="fazerAnotacao">Fazer uma anotação</button>
-        <table id="tableClient" class="records">
-            <thead>
-                <tr>
-                    <th>Anotações</th>
-                    <th>Links</th>
-                    <th class="acao">Ação</th>
-                </tr>
-            </thead>
-            <tbody>
+    <br>
+    <div class="cadastro">
+        <h1 id="titulo">Criar uma nova conta</h2>
+            <label for="email1">Usuario</label>
+            <input type="text" id="login-cad" name="email1" placeholder="Osvaldo" autocomplete="off">
+            <br>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha-cad" placeholder="******" autocomplete="off"> <br>
+            <label for="senha">Repita a senha</label>
+            <input type="password" id="senha-rep" placeholder="******" autocomplete="off"><br>
+            <button onclick="cadastrar()">Cadastrar</button>
+            <br>
+            <span class="text-sec">
+                <p>Ja tem login?</p>
+                <a href="login.html">
+                    <p style="text-decoration: underline;">Clique aqui</p>
+                </a>
+            </span>
+    </div>
 
-            </tbody>
-        </table>
-        <div class="modal" id="modal">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <h2 class="modal-h2">Nova anotação</h2>
-                    <span class="modal-close" id="modalClose">&#10006;</span>
-                </header>
-                <form id="form" class="modal-form">
-                    <input type="text" id="anotacao" data-index="new" class="modal-field" autocomplete="off" placeholder="Faça sua anotacao">
-                    <input type="url" id="link" class="modal-field" placeholder="Insira um link" >
-            
-                </form>
-                <footer class="modal-footer">
-                    <button id="salvar" class="button green">Salvar</button>
-                    <button id="cancelar" class="button blue">Cancelar</button>
-                </footer>
-            </div>
-        </div>
-    </main>
-  
+
+    <script src="login.js"></script>
 </body>
 
 </html>
